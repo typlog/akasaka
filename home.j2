@@ -1,0 +1,33 @@
+{% block style %}
+  <link rel="stylesheet" href="{{ static_url }}akasaka.css">
+{% endblock %}
+
+{% block body %}
+  {% if not features.head_html %}
+    {% include "./_head.j2" %}
+  {% endif %}
+
+  <div class="home-search">
+    {% if site.cover %}
+      <div class="js-cover" data-src="{{ site.cover.src|thumbnail('l') }}">
+        <div class="cover-mask"></div>
+      </div>
+    {% endif %}
+    <div class="inner">
+      <input class="js-search" type="text" placeholder="Search..."
+        {% if features.algolia %}data-id="{{ site.algolia_id }}" data-key="{{ site.algolia_key }}"{% endif %}>
+    </div>
+  </div>
+
+  <div class="home-tags">
+    <div class="inner">
+    {% for tag in query.tags() %}
+      <div class="tag">
+        <a href="{{ linkify(tag.url) }}"{% if tag.cover %} class="js-cover" data-src="{{ tag.cover.src|thumbnail }}"{% endif %}>
+          <span>{{ tag.title }}</span>
+        </a>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+{% endblock %}
