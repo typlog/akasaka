@@ -1,5 +1,6 @@
 {% block style %}
   <link rel="stylesheet" href="{{ static_url }}akasaka.css">
+  <style>.head{border-bottom:0;}</style>
 {% endblock %}
 
 {% block body %}
@@ -21,13 +22,30 @@
 
   <div class="home-tags">
     <div class="inner">
-    {% for tag in query.tags() %}
-      <div class="tag">
-        <a href="{{ linkify(tag.url) }}"{% if tag.cover %} class="js-cover" data-src="{{ tag.cover.src|thumbnail }}"{% endif %}>
-          <span>{{ tag.title }}</span>
-        </a>
+      <h2>Browser by tags</h2>
+      <div class="scrollable">
+        {% for tag in query.tags() %}
+          <div class="tag">
+            <a href="{{ linkify(tag.url) }}"{% if tag.cover %} class="js-cover" data-src="{{ tag.cover.src|thumbnail }}"{% endif %}>
+              <span>{{ tag.title }}</span>
+            </a>
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
+    </div>
+  </div>
+
+  <div class="home-posts">
+    <div class="inner">
+      <h2>Recent updates</h2>
+      <div class="items">
+        {% for post in query.latest_subjects('post') %}
+          <div class="item">
+            <h3><a href="{{ linkify(post.url) }}">{{ post.title }}</a></h3>
+            <time datetime="{{ post.published_at|xmldatetime }}">{{ post.published_at.strftime('%b %d, %Y') }}</time>
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
 {% endblock %}

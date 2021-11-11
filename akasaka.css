@@ -1,7 +1,13 @@
+body {
+  font-family: sans-serif;
+}
 .head {
   background-color: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.1);
 }
 .head .inner {
+  display: flex;
+  justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
   padding: 16px;
@@ -13,6 +19,27 @@
 .head_logo img {
   width: 40px;
   height: 40px;
+}
+.head_brand a {
+  font-size: 20px;
+  text-decoration: none;
+  color: #222;
+}
+.head_links {
+  display: flex;
+  align-items: center;
+}
+.head_links a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0,0,0,.6);
+}
+.head_links a + a {
+  margin-left: 1em;
+}
+.head_links a:hover {
+  color: rgba(0,0,0,.86);
 }
 .home-search {
   position: relative;
@@ -42,31 +69,47 @@
   position: relative;
   z-index: 2;
 }
+.home-search input {
+  background: rgba(255, 255, 255, 0.9);
+  border: 0;
+  padding: 10px 20px;
+  border-radius: 48px;
+  font-size: 20px;
+}
 .home-tags {
-  padding: 68px 0 48px;
+  margin: 68px 0 20px;
+  padding: 0 16px;
 }
 .home-tags .inner {
-  display: flex;
-  flex-wrap: wrap;
   max-width: 1100px;
   margin: 0 auto;
+  height: 200px;
+  overflow: hidden;
+}
+.home-tags .scrollable {
+  display: flex;
+  overflow: auto;
+  margin-left: -8px;
+  margin-right: -8px;
+  padding-bottom: 48px;
 }
 .home-tags .tag {
-  padding: 10px;
+  padding: 8px;
 }
 .home-tags a {
   display: block;
   text-decoration: none;
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
-  width: 320px;
-  height: 180px;
+  width: 260px;
+  height: 150px;
   background: rgba(0, 0, 0, 0.1) no-repeat center;
   background-size: cover;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, .15);
   box-sizing: border-box;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 .home-tags a > span {
   display: flex;
@@ -75,4 +118,39 @@
   background: rgba(0, 0, 0, 0.48);
   justify-content: space-around;
   align-items: center;
+}
+
+.home-tags h2,
+.home-posts h2 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.48);
+}
+.home-posts {
+  padding: 16px;
+}
+.home-posts .inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.home-posts .item {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+}
+.home-posts h3 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 18px;
+}
+.home-posts a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.76);
+}
+.home-posts a:hover {
+  color: rgba(0, 0, 0, 0.98);
+}
+.home-posts time {
+  color: rgba(0, 0, 0, 0.48);
 }

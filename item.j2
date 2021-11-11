@@ -1,3 +1,9 @@
 {% block style %}
   <link rel="stylesheet" href="{{ static_url }}akasaka.css">
 {% endblock %}
+
+{% block body %}
+  {% if not features.head_html %}
+    {% include "./_head.j2" %}
+  {% endif %}
+{% endblock %}
