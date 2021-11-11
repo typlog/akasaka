@@ -2,8 +2,19 @@
   <link rel="stylesheet" href="{{ static_url }}akasaka.css">
 {% endblock %}
 
+{% macro render_item(post) %}
+{% endmacro %}
+
 {% block body %}
   {% if not features.head_html %}
     {% include "./_head.j2" %}
   {% endif %}
+
+  <div class="list-items">
+    <div class="inner">
+      {% for post in page.items %}
+        {{ render_item(post) }}
+      {% endfor %}
+    </div>
+  </div>
 {% endblock %}

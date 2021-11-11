@@ -40,7 +40,7 @@
       <h2>Recent updates</h2>
       <div class="items">
         {% for post in query.latest_subjects('post') %}
-          <div class="item">
+          <div class="item" lang="{{ post.lang }}">
             <h3><a href="{{ linkify(post.url) }}">{{ post.title }}</a></h3>
             <time datetime="{{ post.published_at|xmldatetime }}">{{ post.published_at.strftime('%b %d, %Y') }}</time>
           </div>
