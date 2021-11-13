@@ -3,6 +3,12 @@
 {% endblock %}
 
 {% macro render_item(post) %}
+<div class="item">
+  <h2><a href="{{ linkify(post.url) }}">{{ post.title }}</a></h2>
+  {% if post.subtitle %}
+    <h3><a href="{{ linkify(post.url) }}">{{ post.subtitle }}</a></h3>
+  {% endif %}
+</div>
 {% endmacro %}
 
 {% block body %}
@@ -10,11 +16,26 @@
     {% include "./_head.j2" %}
   {% endif %}
 
+  <div class="list-head">
+    <div class="inner">
+      <h1>{{ page.title }}</h1>
+      {% if page.topic.summary %}<div class="summary">{{ page.topic.summary }}</div>{% endif %}
+    </div>
+  </div>
+
   <div class="list-items">
     <div class="inner">
+      <nav class="tags">
+        {% for tag in query.tags() %}
+          <a href="{{ linkify(tag.url) }}">{{ tag.title }}</a>
+        {% endfor %}
+      </nav>
+
       {% for post in page.items %}
         {{ render_item(post) }}
       {% endfor %}
     </div>
   </div>
+
+  {% include "_snippets/brand_foot.j2" %}
 {% endblock %}

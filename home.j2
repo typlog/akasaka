@@ -22,7 +22,7 @@
 
   <div class="home-tags">
     <div class="inner">
-      <h2>Browser by tags</h2>
+      <div class="section-title">Browser by tags</div>
       <div class="scrollable">
         {% for tag in query.tags() %}
           <div class="tag">
@@ -37,10 +37,10 @@
 
   <div class="home-posts">
     <div class="inner">
-      <h2>Recent updates</h2>
-      <div class="items">
+      <div class="section-title">Recent updates</div>
+      <div class="updates">
         {% for post in query.latest_subjects('post') %}
-          <div class="item" lang="{{ post.lang }}">
+          <div class="post" lang="{{ post.lang }}">
             <h3><a href="{{ linkify(post.url) }}">{{ post.title }}</a></h3>
             <time datetime="{{ post.published_at|xmldatetime }}">{{ post.published_at.strftime('%b %d, %Y') }}</time>
           </div>
@@ -48,4 +48,5 @@
       </div>
     </div>
   </div>
+  {% include "_snippets/brand_foot.j2" %}
 {% endblock %}
