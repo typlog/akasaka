@@ -1,7 +1,7 @@
 {% from "macros.j2" import render_subject_content %}
 
 {% block style %}
-  <link rel="stylesheet" href="{{ static_url }}akasaka.css">
+  <link rel="stylesheet" href="{{ static_url }}assets/item.css">
 {% endblock %}
 
 {% block body %}
@@ -9,53 +9,48 @@
     {% include "./_head.j2" %}
   {% endif %}
 
-  <div class="item-page">
-    <aside class="side"></aside>
-    <div class="main">
-      <article role="main" class="h-entry" itemscope itemtype="http://schema.org/Article">
-        {% if page.tags %}
-          <div class="breadcrumbs">
-            {% for tag in page.tags %}
-              <a class="p-category" href="{{ linkify(tag.url) }}">{{ tag.title }}</a>
-              <span class="sep">/</span>
-            {% endfor %}
-            <span>{{ page.title }}</span>
-          </div>
+  <div class="main">
+    <article role="main" class="h-entry" itemscope itemtype="http://schema.org/Article">
+      {% if page.tags %}
+        <div class="breadcrumbs">
+          {% for tag in page.tags %}
+            <a class="p-category" href="{{ linkify(tag.url) }}">{{ tag.title }}</a>
+            <span class="sep">/</span>
+          {% endfor %}
+          <span>{{ page.title }}</span>
+        </div>
+      {% endif %}
+      <h1 class="p-name" itemprop="headline">{{ page.title }}</h1>
+      <div class="e-content js-content yue" itemprop="articleBody">
+        {{ render_subject_content(site, page) }}
+      </div>
+      <div class="entry-meta"
+        {% if page.published_at %}
+          <time class="dt-published" datetime="{{ page.published_at|xmldatetime }}"
+                itemprop="datePublished">{{ page.published_at.strftime('%b %d, %Y') }}</time>
         {% endif %}
-        <h1 class="p-name" itemprop="headline">{{ page.title }}</h1>
-        <div class="e-content js-content yue" itemprop="articleBody">
-          {{ render_subject_content(site, page) }}
-        </div>
-        <div class="entry-meta"
-          {% if page.published_at %}
-            <time class="dt-published" datetime="{{ page.published_at|xmldatetime }}"
-                  itemprop="datePublished">{{ page.published_at.strftime('%b %d, %Y') }}</time>
-          {% endif %}
-        </div>
+      </div>
+      {% if page.type == 'post' %}
         <div class="entry-enjoy">
           <button class="enjoy js-enjoy">Enjoy</button>
         </div>
-
-        {% if page.type != 'page' %}
-          {% set prev_subjects = query.previous_subjects(page, 2) %}
-          {% if prev_subjects %}
-            <section class="entry-section">
-              <div class="section-title">Read more</div>
-              {% for post in prev_subjects %}
-              <div class="item">
-                <h2><a href="{{ linkify(post.url) }}">{{ post.title }}</a></h2>
-                {% if post.subtitle %}
-                  <h3><a href="{{ linkify(post.url) }}">{{ post.subtitle }}</a></h3>
-                {% endif %}
-              </div>
-              {% endfor %}
-            </section>
-          {% endif %}
+        {% set items = query.related_subjects(page, 2) %}
+        {% if items %}
+          <section class="entry-section">
+            <div class="section-title">Read more</div>
+            {% for post in items %}
+            <div class="item">
+              <h2><a href="{{ linkify(post.url) }}">{{ post.title }}</a></h2>
+              {% if post.subtitle %}
+                <h3><a href="{{ linkify(post.url) }}">{{ post.subtitle }}</a></h3>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </section>
         {% endif %}
-      </article>
-    </div>
+      {% endif %}
+    </article>
   </div>
 
   {% include "_snippets/brand_foot.j2" %}
-  <script src="{{ static_url }}toc.js">
 {% endblock %}

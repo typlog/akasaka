@@ -1,3 +1,5 @@
+{% block title %}{{ site.name }}{% endblock %}
+
 {% block style %}
   <link rel="stylesheet" href="{{ static_url }}assets/index.css">
 {% endblock %}
@@ -19,11 +21,16 @@
     </div>
   </div>
 
+  {% set locale = page.topic.locale %}
   <div class="tags">
     <div class="inner">
-      <div class="section-title">Browser by collections</div>
+      {% if locale in ('zh', 'zh-hans') %}
+        <div class="section-title">分类</div>
+      {% else %}
+        <div class="section-title">Browser by collections</div>
+      {% endif %}
       <div class="scrollable">
-        {% for tag in query.tags() %}
+        {% for tag in query.tags(lang=locale) %}
           <div class="tag">
             <a href="{{ linkify(tag.url) }}"{% if tag.cover %} class="js-cover" data-src="{{ tag.cover.src|thumbnail }}"{% endif %}>
               <span>{{ tag.title }}</span>
@@ -33,12 +40,15 @@
       </div>
     </div>
   </div>
-
   <div class="posts">
     <div class="inner">
-      <div class="section-title">Recent updates</div>
+      {% if locale in ('zh', 'zh-hans') %}
+        <div class="section-title">最近更新</div>
+      {% else %}
+        <div class="section-title">Recent updates</div>
+      {% endif %}
       <div class="updates">
-        {% for post in query.latest_subjects('post') %}
+        {% for post in page.items %}
           <div class="post" lang="{{ post.lang }}">
             <h3><a href="{{ linkify(post.url) }}">{{ post.title }}</a></h3>
             <time datetime="{{ post.published_at|xmldatetime }}">{{ post.published_at.strftime('%b %d, %Y') }}</time>

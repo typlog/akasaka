@@ -1,0 +1,136 @@
+:root {
+  --en-sans: "Helvetica Neue", "Helvetica", Aria;
+  --en-serif: "Droid Serif", "Times New Roman";
+  --sys-sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue";
+  --cjk-sans: "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei";
+  --cjk-serif: "Source Han Serif TW", "Source Han Serif CN", "Source Han Serif JP";
+}
+
+body {
+  color: rgba(0, 0, 0, 0.86);
+  font: 16px/1.42 var(--en-sans), var(--cjk-sans), sans-serif;
+}
+
+.head {
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.head .inner {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+}
+.head_logo {
+  display: inline-block;
+}
+.head_logo img {
+  width: 40px;
+  height: 40px;
+}
+.head_brand a {
+  font-size: 20px;
+  text-decoration: none;
+  color: #222;
+}
+.head_links {
+  display: flex;
+  align-items: center;
+}
+.head_links a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0,0,0,.6);
+}
+.head_links a + a {
+  margin-left: 1em;
+}
+.head_links a:hover {
+  color: rgba(0,0,0,.86);
+}
+
+.list-head {
+  position: relative;
+  padding: 80px 0 60px;
+  text-align: center;
+}
+.list-head:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('./bg.svg') repeat center;
+  opacity: 0.4;
+  z-index: -1;
+}
+.list-head .inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.list-head h1 {
+  font-size: 30px;
+  letter-spacing: -0.5px;
+}
+.list-head .summary {
+  max-width: 420px;
+  margin: 0 auto;
+  font-size: 18px;
+  color: #999;
+}
+.tags {
+  text-align: center;
+  margin-top: 32px;
+}
+.tags a {
+  display: inline-block;
+  margin: 0 8px;
+  padding: 6px 15px;
+  border: 1px solid #eee;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 500;
+  border-radius: 15px;
+  text-decoration: none;
+  color:rgba(0, 0, 0, 0.76);
+}
+.tags a:hover {
+  border-color: #999;
+}
+
+.items {
+  padding: 16px;
+}
+.items .inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding-bottom: 48px;
+}
+.item {
+  padding: 24px 0;
+}
+.item + .item {
+  border-top: 1px solid #eee;
+}
+.item a {
+  text-decoration: none;
+  color: inherit;
+}
+.item a:hover {
+  opacity: 0.8;
+}
+.item h2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+.item h3 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  color: #999;
+}

@@ -1,5 +1,5 @@
 {% block style %}
-  <link rel="stylesheet" href="{{ static_url }}akasaka.css">
+  <link rel="stylesheet" href="{{ static_url }}assets/list.css">
 {% endblock %}
 
 {% macro render_item(post) %}
@@ -20,18 +20,21 @@
     <div class="inner">
       <h1>{{ page.title }}</h1>
       {% if page.topic.summary %}<div class="summary">{{ page.topic.summary }}</div>{% endif %}
-    </div>
-  </div>
-
-  <div class="list-items">
-    <div class="inner">
       <nav class="tags">
         {% for tag in query.tags() %}
           <a href="{{ linkify(tag.url) }}">{{ tag.title }}</a>
         {% endfor %}
       </nav>
+    </div>
+  </div>
 
-      {% for post in page.items %}
+  <div class="items">
+    <div class="inner">
+      {% set items = page.items %}
+      {% if page.type == 'tag' %}
+        {% set items = items|reverse %}
+      {% endif %}
+      {% for post in items %}
         {{ render_item(post) }}
       {% endfor %}
     </div>

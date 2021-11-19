@@ -10,6 +10,12 @@
     "id": 3077,
     "name": "Akasaka"
   },
+  "templates": [
+    "home.j2",
+    "item.j2",
+    "list.j2",
+    "lang.j2"
+  ],
   "tags": ["doc"],
   "images": [
     "https://user-images.githubusercontent.com/290496/141270232-8ae07471-526a-4280-9189-2e421bb0bdea.png"
