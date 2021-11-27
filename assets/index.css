@@ -1,5 +1,5 @@
 :root {
-  --en-sans: "Helvetica Neue", "Helvetica", Aria;
+  --en-sans: "Source Sans Pro", "Helvetica Neue", "Helvetica", Aria;
   --en-serif: "Droid Serif", "Times New Roman";
   --sys-sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue";
   --cjk-sans: "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei";
@@ -19,6 +19,7 @@ body {
 }
 
 .head {
+  font-family: var(--sys-sans), var(--cjk-sans), sans-serif;
   background-color: #fff;
 }
 .head .inner {
