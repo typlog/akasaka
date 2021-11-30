@@ -6,10 +6,6 @@
   "repo": "typlog/akasaka",
   "version": "0.2.0",
   "preview": "https://docs.typlog.com/",
-  "site": {
-    "id": 3077,
-    "name": "Akasaka"
-  },
   "templates": [
     "home.j2",
     "item.j2",
