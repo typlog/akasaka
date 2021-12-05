@@ -4,7 +4,7 @@
   "name#zh": "赤坂",
   "author": "Typlog",
   "repo": "typlog/akasaka",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "preview": "https://docs.typlog.com/",
   "templates": [
     "home.j2",
@@ -14,6 +14,7 @@
   ],
   "tags": ["doc"],
   "images": [
-    "https://user-images.githubusercontent.com/290496/141270232-8ae07471-526a-4280-9189-2e421bb0bdea.png"
+    "https://user-images.githubusercontent.com/290496/143881184-a7427865-d1c7-472e-9dc0-d28beb38cf62.png",
+    "https://user-images.githubusercontent.com/290496/143881498-a996ead3-ca3c-47a6-9048-a593f055c1e7.png"
   ]
 }
