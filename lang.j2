@@ -25,24 +25,28 @@
   </div>
 
   {% set locale = page.topic.locale %}
-  <div class="tags">
-    <div class="inner">
-      {% if locale in ('zh', 'zh-hans') %}
-        <div class="section-title">分类</div>
-      {% else %}
-        <div class="section-title">Browser by collections</div>
-      {% endif %}
-      <div class="scrollable">
-        {% for tag in query.tags(lang=locale) %}
-          <div class="tag">
-            <a href="{{ linkify(tag.url) }}"{% if tag.cover %} class="js-cover" data-src="{{ tag.cover.src|thumbnail }}"{% endif %}>
-              <span>{{ tag.title }}</span>
-            </a>
-          </div>
-        {% endfor %}
+  {% set tags = query.tags(lang=locale) %}
+  {% if tags %}
+    <div class="tags">
+      <div class="inner">
+        {% if locale in ('zh', 'zh-hans') %}
+          <div class="section-title">分类</div>
+        {% else %}
+          <div class="section-title">Browser by collections</div>
+        {% endif %}
+        <div class="scrollable">
+          {% for tag in tags %}
+            <div class="tag">
+              <a href="{{ linkify(tag.url) }}"{% if tag.cover %} class="js-cover" data-src="{{ tag.cover.src|thumbnail }}"{% endif %}>
+                <span>{{ tag.title }}</span>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
+
   <div class="posts">
     <div class="inner">
       {% if locale in ('zh', 'zh-hans') %}

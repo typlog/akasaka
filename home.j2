@@ -22,20 +22,23 @@
     </div>
   </div>
 
-  <div class="tags">
-    <div class="inner">
-      <div class="section-title">Browser by collections</div>
-      <div class="scrollable">
-        {% for tag in query.tags() %}
-          <div class="tag">
-            <a href="{{ linkify(tag.url) }}"{% if tag.cover %} class="js-cover" data-src="{{ tag.cover.src|thumbnail }}"{% endif %}>
-              <span>{{ tag.title }}</span>
-            </a>
-          </div>
-        {% endfor %}
+  {% set tags = query.tags() %}
+  {% if tags %}
+    <div class="tags">
+      <div class="inner">
+        <div class="section-title">Browser by collections</div>
+        <div class="scrollable">
+          {% for tag in tags %}
+            <div class="tag">
+              <a href="{{ linkify(tag.url) }}"{% if tag.cover %} class="js-cover" data-src="{{ tag.cover.src|thumbnail }}"{% endif %}>
+                <span>{{ tag.title }}</span>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
 
   <div class="posts">
     <div class="inner">
