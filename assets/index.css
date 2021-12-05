@@ -65,6 +65,7 @@ body {
   justify-content: space-around;
   align-items: center;
   height: 260px;
+  background-color: rgb(var(--rgb-primary));
 }
 .search .js-cover {
   position: absolute;

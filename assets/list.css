@@ -72,6 +72,7 @@ body {
 .list-head .inner {
   max-width: 680px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 .list-head h1 {
   font-size: 30px;
@@ -89,7 +90,7 @@ body {
 }
 .tags a {
   display: inline-block;
-  margin: 0 8px;
+  margin: 4px 8px;
   padding: 6px 15px;
   border: 1px solid #eee;
   font-size: 13px;
