@@ -4,8 +4,8 @@
   "name#zh": "赤坂",
   "author": "Typlog",
   "repo": "typlog/akasaka",
-  "version": "0.3.1",
-  "preview": "https://docs.typlog.com/",
+  "version": "0.4.0",
+  "preview": "https://docs.typlog.com/en/",
   "templates": [
     "home.j2",
     "item.j2",
