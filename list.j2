@@ -5,6 +5,10 @@
   <link rel="stylesheet" href="{{ static_url }}assets/list.css">
 {% endblock %}
 
+{% if page.type == 'tag' %}
+{% block lang %}{{ page.topic.lang }}{% endblock %}
+{% endif %}
+
 {% macro render_item(post) %}
 <div class="item">
   <h2><a href="{{ linkify(post.url) }}">{{ post.title }}</a></h2>
@@ -23,11 +27,13 @@
     <div class="inner">
       <h1>{{ page.title }}</h1>
       {% if page.topic.summary %}<div class="summary">{{ page.topic.summary }}</div>{% endif %}
-      <nav class="tags">
-        {% for tag in query.tags() %}
-          <a href="{{ linkify(tag.url) }}">{{ tag.title }}</a>
-        {% endfor %}
-      </nav>
+      {% if page.type == 'tag' %}
+        <nav class="tags">
+          {% for tag in query.tags(lang=page.topic.lang) %}
+            <a href="{{ linkify(tag.url) }}">{{ tag.title }}</a>
+          {% endfor %}
+        </nav>
+      {% endif %}
     </div>
   </div>
 
