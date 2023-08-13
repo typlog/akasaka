@@ -1,0 +1,58 @@
+:root {
+  --rc-base: 255, 255, 255;
+  --rc-invert: 0, 0, 0;
+
+  --c-bg: #fff;
+  --c-bg-weak: #f9f9f9;
+  --c-bg-mute: #f1f1f1;
+
+  --f-sys-sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue";
+  --f-en-sans: "Source Sans Pro", "Helvetica Neue", "Helvetica", Aria;
+  --f-en-serif: "Droid Serif", "Times New Roman";
+  --f-cjk-sans: "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei";
+  --f-cjk-serif: "Source Han Serif TW", "Source Han Serif CN", "Source Han Serif JP";
+  --f-mono: Menlo, Monaco, Consolas, "Courier New", monospace;
+  --f-base: var(--f-en-sans), var(--f-cjk-sans), sans-serif;
+  --f-heading: var(--sys-sans), var(--cjk-sans), sans-serif;
+
+  /* usually used for links */
+  --rc-accent: var(--t-rc-primary);
+
+  --s-head-height: 55px;
+  --c-head-bg: var(--c-bg);
+  --c-head-text: var(--c-text);
+}
+
+.dark-theme {
+  --rc-base: 0, 0, 0;
+  --rc-invert: 255, 255, 255;
+  --c-bg: #121212;
+  --c-bg-weak: #212833;
+  --c-bg-mute: #444;
+  --rc-accent: var(--t-rc-secondary);
+}
+
+:root {
+  --c-text: rgba(var(--rc-invert), 0.82);
+  --c-text-light: rgba(var(--rc-invert), 0.68);
+  --c-text-strong: rgba(var(--rc-invert), 0.94);
+  --c-text-mute: rgba(var(--rc-invert), 0.4);
+  --c-divider: rgba(var(--rc-invert), 0.08);
+  --c-divider-light: rgba(var(--rc-invert), 0.04);
+  --c-accent: rgb(var(--rc-accent));
+  /* set comment colors */
+  --tc-c-primary: var(--c-accent);
+  --tc-c-link: var(--c-accent);
+}
+
+.yue {
+  --yue-f-base: var(--f-base);
+  --yue-f-quote: var(--yue-f-base);
+  --yue-f-heading: var(--f-heading);
+  --yue-f-mono: var(--f-mono);
+  --yue-c-strong: var(--c-text-strong);
+  --yue-c-light: var(--c-text-light);
+  --yue-c-accent: var(--c-accent);
+  --yue-c-tr: rgba(var(--rc-invert), 0.6);
+  --yue-c-divider: var(--c-divider);
+}

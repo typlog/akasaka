@@ -1,0 +1,62 @@
+{% from "macros.j2" import render_links, render_social_icons %}
+
+{% set akasaka = query.config('akasaka') %}
+
+<header class="head">
+  <div class="head_wrap">
+    <div class="head_inner">
+      <div class="head_logo">
+        {% if akasaka and akasaka.logo %}
+          <a {% if akasaka.url%}href="{{ akasaka.url }}"{% else %}href="/"{% endif%}>
+            {% if akasaka.logo.light %}
+              <img class="light-logo" src="{{ akasaka.logo.light|thumbnail('ss') }}" alt="{{ site.name }}" height="35" />
+            {% endif %}
+            {% if akasaka.logo.dark %}
+              <img class="dark-logo" src="{{ akasaka.logo.dark|thumbnail('ss') }}" alt="{{ site.name }}" height="35" />
+            {% endif %}
+          </a>
+        {% elif site.logo %}
+          <a href="/">
+            <img src="{{ site.logo|thumbnail('ss') }}" alt="{{ site.name }}" width="35" height="35" />
+            <span>{{ site.name }}</span>
+          </a>
+        {% else %}
+          <a href="/">
+            <span>{{ site.name }}</span>
+          </a>
+        {% endif %}
+      </div>
+      <div id="HeadNav" class="head_links">
+        <nav class="head_primary">
+          {% if akasaka and akasaka.primary_nav %}
+            {{ render_links(akasaka.primary_nav, 'Primary') }}
+          {% else %}
+            {{ render_links(site.primary_links, 'Primary') }}
+          {% endif %}
+        </nav>
+        <nav class="head_secondary">
+          {% if akasaka and akasaka.secondary_nav %}
+            {{ render_links(akasaka.secondary_nav, 'Secondary') }}
+          {% else %}
+            {{ render_links(site.secondary_links, 'Secondary') }}
+          {% endif %}
+        </nav>
+      </div>
+      <div class="head_actions">
+        <div class="head_search">
+          <button type="button" class="js-search">
+            <i class="icon icon-search" aria-label="Search"></i>
+          </button>
+        </div>
+        {% include "_snippets/theme_toggle.j2" %}
+        <button type="button" class="head_menu js-toggle-menu" aria-label="mobile navigation" aria-expanded="false" aria-controls="HeadNav">
+          <span class="hamburger">
+            <span class="hamburger_1"></span>
+            <span class="hamburger_2"></span>
+            <span class="hamburger_3"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

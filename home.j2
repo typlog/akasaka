@@ -2,12 +2,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ static_url }}assets/index.css">
+  <link rel="stylesheet" href="{{ static_url }}akasaka.css">
 {% endblock %}
 
 {% block body %}
   {% if not features.head_html %}
-    {% include "./_head.j2" %}
+    {% include "./_partials/head.j2" %}
   {% endif %}
 
   <div class="search">
@@ -24,12 +24,12 @@
 
   {% set tags = query.tags() %}
   {% if tags %}
-    <div class="tags">
+    <div class="cover-tags">
       <div class="inner">
         <div class="section-title">Browser by collections</div>
         <div class="scrollable">
           {% for tag in tags %}
-            <div class="tag">
+            <div class="cover-tag">
               <a href="{{ linkify(tag.url) }}"{% if tag.cover %} class="js-cover" data-src="{{ tag.cover.src|thumbnail }}"{% endif %}>
                 <span>{{ tag.title }}</span>
               </a>

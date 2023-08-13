@@ -1,0 +1,81 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  font: 400 16px/1.5 var(--f-base);
+  color: var(--c-text);
+  background-color: var(--c-bg);
+  direction: ltr;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.win {
+  font-family: 'Twemoji Country Flags', var(--f-base);
+}
+
+a {
+  color: var(--c-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgba(var(--rc-accent), 0.8);
+  text-decoration: underline;
+}
+
+del {
+  text-decoration: line-through var(--c-text);
+}
+
+pre, code {
+  font-family: var(--f-mono);
+}
+
+ul.links,
+ul.links ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.inner:after, .item:after, .navigation:after {
+  display: table;
+  content: '';
+  clear: both;
+}
+
+.head {
+  position: relative;
+  top: var(--s-head-offset);
+  left: 0;
+  height: var(--s-head-height);
+  border-bottom: 1px solid var(--c-divider);
+  background-color: var(--c-head-bg);
+  padding: 0 12px 0 24px;
+  box-sizing: border-box;
+  z-index: 40;
+}
+
+.typlog-foot {
+  border-top: 1px solid var(--c-divider);
+}
+
+.typlog-foot>div {
+  color: var(--c-text-mute);
+}
+.typlog-foot a {
+  color: var(--c-text-light);
+}
